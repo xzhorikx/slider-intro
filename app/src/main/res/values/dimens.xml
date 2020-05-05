@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Margins and padding-->
+    <dimen name="material_screen_vertical_padding">8dp</dimen>
+    <dimen name="material_screen_horizontal_padding">16dp</dimen>
+    <dimen name="material_sections_vertical_padding">16dp</dimen>
+    <dimen name="material_content_vertical_padding">8dp</dimen>
+
+    <!--Navigation elements-->
+    <dimen name="icon">128dp</dimen>
+    <dimen name="navigation_dot_horizontal_padding">2dp</dimen>
+    <dimen name="navigation_dot_size">8dp</dimen>
+
+    <!--Text sizes-->
+    <dimen name="material_text_title">20sp</dimen>
+    <dimen name="material_text_sub_content">13sp</dimen>
+</resources>

@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Slider Intro</string>
+    <string name="intro_skip">Skip</string>
+    <string name="intro_next">Next</string>
+    <string name="intro_finish">Finish</string>
+    <string name="icon_description">Icon</string>
+    <string name="strawberry">Strawberry</string>
+    <string name="pineapple">Pineapple</string>
+    <string name="orange">Orange</string>
+    <string name="strawberry_body">10 million baskets of strawberries are shipped daily during harvest time in California</string>
+    <string name="pineapple_body">Pineapples take about 18–20 months to become ready to harvest</string>
+    <string name="orange_body">The orange is a citrus fruit and is a hybrid of the pomelo and mandarin</string>
+    <string name="finished_intro">You have successfully finished intro!</string>
+</resources>

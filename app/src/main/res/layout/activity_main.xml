@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vpIntro"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <RelativeLayout
+        android:paddingTop="@dimen/material_screen_vertical_padding"
+        android:paddingBottom="@dimen/material_screen_vertical_padding"
+        android:paddingEnd="@dimen/material_screen_horizontal_padding"
+        android:paddingStart="@dimen/material_screen_horizontal_padding"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/tvIntroSkip"
+            android:text="@string/intro_skip"
+            android:alpha="0.0"
+            android:textAllCaps="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/containerIntroDots"
+            />
+        <LinearLayout
+            android:id="@+id/containerIntroDots"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/navigation_dot_size"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            >
+            <!-- This part is populated programmatically -->
+        </LinearLayout>
+        <TextView
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/tvIntroNext"
+            android:gravity="end|center_vertical"
+            android:text="@string/intro_next"
+            android:alpha="0.0"
+            android:textAllCaps="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/containerIntroDots"
+            />
+        <TextView
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/tvIntoFinish"
+            android:alpha="0.0"
+            android:gravity="end|center_vertical"
+            android:text="@string/intro_finish"
+            android:textAllCaps="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/containerIntroDots"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

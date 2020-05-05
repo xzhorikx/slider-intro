@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/material_screen_vertical_padding"
+    android:paddingBottom="@dimen/material_screen_vertical_padding"
+    android:paddingEnd="@dimen/material_screen_horizontal_padding"
+    android:paddingStart="@dimen/material_screen_horizontal_padding"
+    android:gravity="center"
+    tools:ignore="UseCompoundDrawables">
+
+    <ImageView
+        android:id="@+id/ivFinishIcon"
+        android:contentDescription="@string/icon_description"
+        android:layout_width="@dimen/icon"
+        android:layout_height="@dimen/icon"/>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/material_sections_vertical_padding"/>
+    <TextView
+        android:text="@string/finished_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
