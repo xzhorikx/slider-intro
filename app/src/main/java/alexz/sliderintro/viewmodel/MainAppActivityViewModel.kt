@@ -1,5 +1,9 @@
-package alexz.sliderintro
+package alexz.sliderintro.viewmodel
 
+import alexz.sliderintro.fragment.SliderFragment
+import alexz.sliderintro.state.NavigationDotState
+import alexz.sliderintro.state.NavigationTextState
+import alexz.sliderintro.state.ViewHolderScrollState
 import android.animation.ArgbEvaluator
 import android.app.Application
 import androidx.core.content.ContextCompat
@@ -19,8 +23,7 @@ class MainAppActivityViewModel(application: Application) : AndroidViewModel(appl
      * Ordered list of all fragments that should be displayed in intro slider
      */
     private val fragmentList: List<SliderFragment> by lazy {
-        return@lazy SliderFragment
-            .ScreenType
+        return@lazy SliderFragment.ScreenType
             .values()
             .map { screenType: SliderFragment.ScreenType ->
                 SliderFragment.newInstance(screenType)

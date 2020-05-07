@@ -1,5 +1,13 @@
-package alexz.sliderintro
+package alexz.sliderintro.activity
 
+import alexz.sliderintro.R
+import alexz.sliderintro.adapter.SliderAdapter
+import alexz.sliderintro.fragment.SliderFragment
+import alexz.sliderintro.state.NavigationDotState
+import alexz.sliderintro.state.NavigationTextState
+import alexz.sliderintro.state.ViewHolderScrollState
+import alexz.sliderintro.viewmodel.MainAppActivityViewModel
+import alexz.sliderintro.viewmodel.MainAppActivityViewModelFactory
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.GradientDrawable
@@ -56,7 +64,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 // Calculating new offset sum and saving it as new state of view pager transition
                 val offsetSum: Float = position + positionOffset
-                val viewPagerScrollState = ViewHolderScrollState(offsetSum = offsetSum)
+                val viewPagerScrollState =
+                    ViewHolderScrollState(offsetSum = offsetSum)
                 mainAppActivityViewModel.updateViewPagerScrollState(viewPagerScrollState)
             }
         }
@@ -64,7 +73,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(LAYOUT_ID)
-        mainAppActivityViewModelFactory = MainAppActivityViewModelFactory(application)
+        mainAppActivityViewModelFactory =
+            MainAppActivityViewModelFactory(
+                application
+            )
         initObservers()
     }
 
@@ -75,7 +87,10 @@ class MainActivity : AppCompatActivity() {
         mainAppActivityViewModel.fragmentLiveData.observe(this, Observer {
             it?.let { sliderFragmentList: List<SliderFragment> ->
                 // Once we get fragment list to be added to view pager, we initialize 'vpIntro'
-                val sliderAdapter = SliderAdapter(supportFragmentManager, sliderFragmentList)
+                val sliderAdapter = SliderAdapter(
+                    supportFragmentManager,
+                    sliderFragmentList
+                )
                 vpIntro?.apply {
                     clearOnPageChangeListeners()
                     addOnPageChangeListener(onPageChangeListener)

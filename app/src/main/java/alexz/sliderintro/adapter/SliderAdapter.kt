@@ -1,5 +1,6 @@
-package alexz.sliderintro
+package alexz.sliderintro.adapter
 
+import alexz.sliderintro.fragment.SliderFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter

@@ -1,4 +1,4 @@
-package alexz.sliderintro
+package alexz.sliderintro.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
@@ -10,7 +10,9 @@ class MainAppActivityViewModelFactory (
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(MainAppActivityViewModel::class.java)){
-            return MainAppActivityViewModel(application) as T
+            return MainAppActivityViewModel(
+                application
+            ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

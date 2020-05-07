@@ -1,5 +1,7 @@
-package alexz.sliderintro
+package alexz.sliderintro.fragment
 
+import alexz.sliderintro.BitmapHelper
+import alexz.sliderintro.R
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -115,7 +117,10 @@ class SliderFragment : Fragment() {
             ScreenType.SCREEN_THIRD -> "orange"
         }
         val iconAssetFileName = "$iconAssetName.$iconFormat"
-        return BitmapHelper.getIconBitmap(iconAssetFileName, context)
+        return BitmapHelper.getIconBitmap(
+            iconAssetFileName,
+            context
+        )
     }
 
     /**

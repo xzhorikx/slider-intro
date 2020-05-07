@@ -1,5 +1,7 @@
-package alexz.sliderintro
+package alexz.sliderintro.activity
 
+import alexz.sliderintro.BitmapHelper
+import alexz.sliderintro.R
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_finish.*
@@ -10,6 +12,11 @@ class IntroFinishedActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(LAYOUT_ID)
-        ivFinishIcon?.setImageBitmap(BitmapHelper.getIconBitmap("apple.png", this))
+        ivFinishIcon?.setImageBitmap(
+            BitmapHelper.getIconBitmap(
+                "apple.png",
+                this
+            )
+        )
     }
 }

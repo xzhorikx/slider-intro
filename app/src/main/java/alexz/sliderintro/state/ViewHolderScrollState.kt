@@ -1,4 +1,4 @@
-package alexz.sliderintro
+package alexz.sliderintro.state
 
 /**
  * State for view holder scroll transition
