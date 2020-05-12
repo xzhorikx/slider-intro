@@ -170,7 +170,7 @@ class MainAppActivityViewModel(application: Application) : AndroidViewModel(appl
                         }
                     }
 
-                    NavigationDotState(
+                   return@mapIndexed NavigationDotState(
                         position = fragmentIndex,
                         alpha = newAlpha,
                         scale = newScale
