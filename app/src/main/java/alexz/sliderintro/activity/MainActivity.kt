@@ -179,12 +179,22 @@ class MainActivity : AppCompatActivity() {
                 sizePx,
                 sizePx
             )
-            val alpha: Float = if(i == 0){1.0f} else {0.5f}
+            val alpha: Float
+            val scale: Float
+            if(i == 0){
+                alpha = NavigationDotState.ALPHA_MAX
+                scale = NavigationDotState.SCALE_MAX
+            } else {
+                alpha = NavigationDotState.ALPHA_MIN
+                scale = NavigationDotState.SCALE_MIN
+            }
             layoutParams.setMargins(leftRightMarginPx, 0, leftRightMarginPx, 0)
             layoutParams.gravity = Gravity.CENTER_VERTICAL
             dotView.layoutParams = layoutParams
             dotView.setBackgroundResource(R.drawable.circle_white)
             dotView.alpha = alpha
+            dotView.scaleY = scale
+            dotView.scaleX = scale
             try {
                 val background: GradientDrawable = dotView.background as GradientDrawable
                 val bgColorRes: Int = R.color.colorWhite
