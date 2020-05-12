@@ -118,10 +118,10 @@ class MainAppActivityViewModel(application: Application) : AndroidViewModel(appl
             val position: Int = floor(offsetSum).toInt()
             val offset: Float =  offsetSum - position
             return@map fragmentList
-                .mapIndexed { index, _ ->
+                .mapIndexed { fragmentIndex, _ ->
 
-                    val alphaDelta: Float = NavigationDotState.ALPHA_MAX / NavigationDotState.ALPHA_MIN
-                    val scaleDelta: Float = NavigationDotState.SCALE_MAX / NavigationDotState.SCALE_MIN
+                    val alphaDelta: Float = NavigationDotState.ALPHA_MAX - NavigationDotState.ALPHA_MIN
+                    val scaleDelta: Float = NavigationDotState.SCALE_MAX - NavigationDotState.SCALE_MIN
 
                     val newAlpha: Float
                     val newScale: Float
@@ -146,7 +146,7 @@ class MainAppActivityViewModel(application: Application) : AndroidViewModel(appl
                     *               (-1.0, 0.0)  -   user navigate to this fragment from another one
                     *   [inf, -1.0], [1.0, inf]  -   dot doesn't participate in transition
                     * */
-                    when (offsetSum - index) {
+                    when (offsetSum - fragmentIndex) {
                         0.0f -> {
                             // Dot of the fragment that occupies the whole screen
                             newAlpha = NavigationDotState.ALPHA_MAX
@@ -154,13 +154,13 @@ class MainAppActivityViewModel(application: Application) : AndroidViewModel(appl
                         }
                         in -0.999f .. 0.0f -> {
                             // User is navigating towards the dot. It needs to increase visibility/scale
-                            newAlpha = NavigationDotState.ALPHA_MIN + (offset / alphaDelta)
-                            newScale = NavigationDotState.SCALE_MIN + (offset / scaleDelta)
+                            newAlpha = NavigationDotState.ALPHA_MIN + (offset * alphaDelta)
+                            newScale = NavigationDotState.SCALE_MIN + (offset * scaleDelta)
                         }
                         in 0.0f .. 0.999f -> {
                             // User is navigating away from the dot. It needs to decrease visibility/scale
-                            newAlpha = NavigationDotState.ALPHA_MAX - (offset / alphaDelta)
-                            newScale = NavigationDotState.SCALE_MAX - (offset / scaleDelta)
+                            newAlpha = NavigationDotState.ALPHA_MAX - (offset * alphaDelta)
+                            newScale = NavigationDotState.SCALE_MAX - (offset * scaleDelta)
                         }
                         else -> {
                             // Navigation dot does not participate in current transition as it
@@ -171,7 +171,7 @@ class MainAppActivityViewModel(application: Application) : AndroidViewModel(appl
                     }
 
                     NavigationDotState(
-                        position = index,
+                        position = fragmentIndex,
                         alpha = newAlpha,
                         scale = newScale
                     )
