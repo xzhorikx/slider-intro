@@ -14,6 +14,7 @@ import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
+import android.view.WindowManager
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -108,6 +109,12 @@ class MainActivity : AppCompatActivity() {
         mainAppActivityViewModel.backgroundColorLiveData.observe(this, Observer {
             it?.let {backgroundColor: Int ->
                 vpIntro?.setBackgroundColor(backgroundColor)
+                // Applying same background color to the status bar
+                window.apply {
+                    clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                    addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                    statusBarColor = backgroundColor
+                }
             }
         })
 
