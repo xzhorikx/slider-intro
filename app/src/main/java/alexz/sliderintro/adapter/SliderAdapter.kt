@@ -9,17 +9,17 @@ import androidx.fragment.app.FragmentStatePagerAdapter
  * View pager adapter that displays list of fragments
  *
  * @param fragmentManager fragment manager
- * @param fragmentList list of fragments to display
+ * @param fragmentTypeList list of fragment types to display
  */
 class SliderAdapter(
     fragmentManager: FragmentManager,
-    private val fragmentList: List<SliderFragment>
+    private val fragmentTypeList: List<SliderFragment.ScreenType>
 ): FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     override fun getItem(position: Int): Fragment {
-        return fragmentList[position]
+        return SliderFragment.newInstance(fragmentTypeList[position])
     }
 
     override fun getCount(): Int {
-        return fragmentList.size
+        return fragmentTypeList.size
     }
 }
