@@ -84,8 +84,8 @@ class MainActivity : AppCompatActivity() {
      * Initializes all necessary LiveData observers
      */
     private fun initObservers() {
-        mainAppActivityViewModel.fragmentLiveData.observe(this, Observer {
-            it?.let { sliderFragmentList: List<SliderFragment> ->
+        mainAppActivityViewModel.fragmentTypeListLiveData.observe(this, Observer {
+            it?.let { sliderFragmentList: List<SliderFragment.ScreenType> ->
                 // Once we get fragment list to be added to view pager, we initialize 'vpIntro'
                 val sliderAdapter = SliderAdapter(
                     supportFragmentManager,

@@ -22,12 +22,8 @@ class MainAppActivityViewModel(application: Application) : AndroidViewModel(appl
     /**
      * Ordered list of all fragments that should be displayed in intro slider
      */
-    private val fragmentList: List<SliderFragment> by lazy {
-        return@lazy SliderFragment.ScreenType
-            .values()
-            .map { screenType: SliderFragment.ScreenType ->
-                SliderFragment.newInstance(screenType)
-            }
+    private val fragmentTypeList: List<SliderFragment.ScreenType> by lazy {
+        return@lazy SliderFragment.ScreenType.values().toList()
     }
 
     /**
@@ -48,7 +44,7 @@ class MainAppActivityViewModel(application: Application) : AndroidViewModel(appl
             val offsetSum: Float = viewHolderScrollState.offsetSum
             val position: Int = floor(offsetSum).toInt()
             val offset: Float =  offsetSum - position
-            val lastFragmentPosition: Int = fragmentList.size - 1
+            val lastFragmentPosition: Int = fragmentTypeList.size - 1
             val range = lastFragmentPosition - offsetSum
             val skipTextAlpha: Float
             val nextTextAlpha: Float
@@ -95,8 +91,8 @@ class MainAppActivityViewModel(application: Application) : AndroidViewModel(appl
             // 2. First dot should have maximum alpha, others should have minimum alpha
             // 3. First dot should have maximum scale, others should have minimum scale
             if(null == viewHolderScrollState){
-                return@map fragmentList
-                    .mapIndexed { index: Int, _: SliderFragment ->
+                return@map fragmentTypeList
+                    .mapIndexed { index: Int, _: SliderFragment.ScreenType ->
                         val alpha: Float
                         val scale: Float
                         if(index == 0){
@@ -117,7 +113,7 @@ class MainAppActivityViewModel(application: Application) : AndroidViewModel(appl
             val offsetSum: Float = viewHolderScrollState.offsetSum
             val position: Int = floor(offsetSum).toInt()
             val offset: Float =  offsetSum - position
-            return@map fragmentList
+            return@map fragmentTypeList
                 .mapIndexed { fragmentIndex, _ ->
 
                     val alphaDelta: Float = NavigationDotState.ALPHA_MAX - NavigationDotState.ALPHA_MIN
@@ -193,13 +189,13 @@ class MainAppActivityViewModel(application: Application) : AndroidViewModel(appl
                 val offsetSum: Float = viewHolderScrollState.offsetSum
                 val position: Int = floor(offsetSum).toInt()
                 val offset: Float =  offsetSum - position
-                val fragmentColor: Int = fragmentList[position].getBackgroundColor()
-                return@let if(position < (fragmentList.size - 1)){
+                val fragmentColor: Int = fragmentTypeList[position].backgroundColor
+                return@let if(position < (fragmentTypeList.size - 1)){
                     argbEvaluator
                         .evaluate(
                             offset,
                             ContextCompat.getColor(application, fragmentColor),
-                            ContextCompat.getColor(application, fragmentList[position + 1].getBackgroundColor())
+                            ContextCompat.getColor(application, fragmentTypeList[position + 1].backgroundColor)
                         ) as Int
                 } else {
                     ContextCompat.getColor(application, fragmentColor)
@@ -208,11 +204,11 @@ class MainAppActivityViewModel(application: Application) : AndroidViewModel(appl
         }
     }
     /**
-     * Live data containing ordered list of all fragments that should be displayed in intro slider
+     * Live data containing ordered list of all fragment types that should be displayed in intro slider
      */
-    val fragmentLiveData: LiveData<List<SliderFragment>?> by lazy {
-        val mLiveData = MutableLiveData<List<SliderFragment>?>()
-        mLiveData.postValue(fragmentList)
+    val fragmentTypeListLiveData: LiveData<List<SliderFragment.ScreenType>?> by lazy {
+        val mLiveData = MutableLiveData<List<SliderFragment.ScreenType>?>()
+        mLiveData.postValue(fragmentTypeList)
         return@lazy mLiveData
     }
 

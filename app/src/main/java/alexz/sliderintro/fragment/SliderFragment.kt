@@ -23,20 +23,23 @@ class SliderFragment : Fragment() {
 
     /**
      * Enumeration for all types of screens that need to be displayed in adapter
+     *
+     * @param backgroundColor background color reference for the type of screen. Note that this color
+     * is unresolved and needs to be processed using ContextCompat.getColor() method.
      */
-    enum class ScreenType{
+    enum class ScreenType(val backgroundColor: Int){
         /**
          * First screen of the intro slider
          */
-        SCREEN_FIRST,
+        SCREEN_FIRST(backgroundColor = R.color.colorIntroFirst),
         /**
          * Second screen of the intro slider
          */
-        SCREEN_SECOND,
+        SCREEN_SECOND(backgroundColor = R.color.colorIntroSecond),
         /**
          * Third screen of the intro slider
          */
-        SCREEN_THIRD
+        SCREEN_THIRD(backgroundColor =  R.color.colorIntroThird)
     }
 
     companion object {
@@ -85,21 +88,6 @@ class SliderFragment : Fragment() {
         super.onSaveInstanceState(outState)
         // Saving screen type value
         outState.putSerializable(KEY_PAGE_TYPE, screenType)
-    }
-
-    /**
-     * Unresolved resource background color that needs to be set in view pager when this fragment
-     * is displayed. Make sure to resolve it to color using ContextCompat.getColor()
-     *
-     * @return ID of color from R.color that needs to be resolved.
-     */
-    fun getBackgroundColor(): Int {
-        return when(screenType){
-            ScreenType.SCREEN_FIRST -> R.color.colorIntroFirst
-            ScreenType.SCREEN_SECOND -> R.color.colorIntroSecond
-            ScreenType.SCREEN_THIRD -> R.color.colorIntroThird
-            null -> android.R.color.transparent
-        }
     }
 
     /**
