@@ -86,11 +86,11 @@ class MainActivity : AppCompatActivity() {
      */
     private fun initObservers() {
         mainAppActivityViewModel.fragmentTypeListLiveData.observe(this, Observer {
-            it?.let { sliderFragmentList: List<SliderFragment.ScreenType> ->
+            it?.let { fragmentTypeList: List<SliderFragment.ScreenType> ->
                 // Once we get fragment list to be added to view pager, we initialize 'vpIntro'
                 val sliderAdapter = SliderAdapter(
                     supportFragmentManager,
-                    sliderFragmentList
+                    fragmentTypeList
                 )
                 vpIntro?.apply {
                     clearOnPageChangeListeners()
@@ -100,9 +100,9 @@ class MainActivity : AppCompatActivity() {
 
                 // Initializing navigation dots and saving view references
                 mIntroDotViewList.clear()
-                mIntroDotViewList.addAll(initNavigationDots(size = sliderFragmentList.size, context = this))
+                mIntroDotViewList.addAll(initNavigationDots(size = fragmentTypeList.size, context = this))
 
-                initListeners(fragmentCount = sliderFragmentList.size, viewPager = vpIntro)
+                initListeners(fragmentCount = fragmentTypeList.size, viewPager = vpIntro)
             }
         })
 
